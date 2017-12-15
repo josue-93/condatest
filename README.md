@@ -1,12 +1,12 @@
 # Steps to get up and running
 ## Install Docker and add user
 ``` shell
-jitsejan@ssdnodes-jj-kvm:~$ sudo apt install docker.io docker-compose -y
-jitsejan@ssdnodes-jj-kvm:~$ sudo usermod -aG docker $USER
+$ sudo apt install docker.io docker-compose -y
+$ sudo usermod -aG docker $USER
 ```
 ## Create the folder structure
 ``` shell
-jitsejan@ssdnodes-jj-kvm:~/anaconda3_docker$ tree
+~/anaconda3_docker$ tree
 .
 ├── data
 ├── docker-compose.yml
@@ -22,7 +22,7 @@ Content of Dockerfile:
 FROM continuumio/anaconda3
 ADD requirements.txt /
 RUN pip install -r requirements.txt
-CMD ["/opt/conda/bin/jupyter", "notebook", "--notebook-dir=/opt/notebooks", "--ip='*'", "--no-browser", "--allow-root"]
+CMD ["/opt/conda/bin/jupyter", "notebook", "--notebook-dir=/opt/notebooks", "--ip='*'", "--no-browser", "--allow-root","--port=8558"]
 ```
 
 Content of docker-compose.yml:
@@ -34,13 +34,13 @@ services:
     volumes:
       - ./notebooks:/opt/notebooks
     ports:
-      - "8888:8888"
+      - "8558:8558"
 
 ```
 
 ## Start the container
 ``` shell
-jitsejan@ssdnodes-jj-kvm:~/anaconda3_docker$ docker-compose up --build
+~/anaconda3_docker$ docker-compose up --build
 ```
 
 ## Action
