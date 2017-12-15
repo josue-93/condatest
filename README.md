@@ -6,7 +6,7 @@ $ sudo usermod -aG docker $USER
 ```
 ## Create the folder structure
 ``` shell
-~/anaconda3_docker$ tree
+$ tree
 .
 ├── data
 ├── docker-compose.yml
@@ -40,7 +40,7 @@ services:
 
 ## Start the container
 ``` shell
-~/anaconda3_docker$ docker-compose up --build
+$ docker-compose up --build
 ```
 
 ## Action
